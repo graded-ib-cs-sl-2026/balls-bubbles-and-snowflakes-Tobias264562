@@ -1,10 +1,45 @@
-/** THE ENTIRE CLASS IS INSIDE A COMMENT RIGHT NOW. TO ENABLE THE CLASS, DELETE THIS LINE AND THE LAST ONE.
+
 
 class Bubble {
 
     //MISSING MANY INSTANCE VARIABLES
+    private Sketch s;
+   
+    private float radius;
+    private float x;
+    private float y;
+    
+    private float xSpeed;
+    
+    private float ySpeed;
+   
+    private int fillColor;
 
+    private int borderColor;
+    
+
+   
     //MISSING CONSTRUCTORS
+    public Bubble(Sketch sketch) {
+        s = sketch;
+        radius = 20;
+        x = 100;
+        y = 100;
+        xSpeed = 2;
+        ySpeed = -4;
+        fillColor = s.color(180,180, 255);
+        borderColor = s.color(0, 0, 0);
+    }
+
+    public Bubble(Sketch sketch, float radius, float x, float y, float xspeed, float yspeed) {
+        this.s = sketch;
+        this.radius = radius;
+        this.x = x;
+        this.y = y;
+        this.xSpeed = xspeed;
+        this.ySpeed = yspeed;
+    
+    }
 
     // accessors for the radius, diameter, x, and y values 
     public float getRadius() {
@@ -28,7 +63,10 @@ class Bubble {
         s.fill(fillColor);
         s.circle(x, y, radius*2);
     }
-
+    public void setColors(int fill, int border) {
+        borderColor = border;
+        fillColor = fill;
+    }
     public void move() {
         x = x + xSpeed;
         y = y + ySpeed;
@@ -44,4 +82,4 @@ class Bubble {
     }
 
 }
- **/
+ 

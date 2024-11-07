@@ -1,3 +1,5 @@
+import processing.core.PApplet;
+
 class Ball {
 
     /*
@@ -93,4 +95,29 @@ class Ball {
         }
     }
 
+    public void fillcolor(int i, int j, int k) {
+
+        throw new UnsupportedOperationException("Unimplemented method 'fillcolor'");
+    }
+
+    //** This method ensures that once any ball is hitting another ball, they will bounce off and transfer speed */
+    //** checkCollision method checks if two balls collide by comparing the distance between their centers. */
+    //** In order for the balls to know to collide off of anotheer ball the distance between the centers of two balls have to be less than the sum of their radius. */
+    //**https://chatgpt.com/share/672bfae3-74d8-800c-beed-13e1497cb260 */
+    
+
+    public void checkCollision(Ball other) {
+        float distance = PApplet.dist(this.x, this.y, other.getX(), other.getY());
+        if (distance <= this.radius + other.getRadius()) {
+            this.x = this.x - xSpeed;
+            this.y = this.y - ySpeed;
+            
+            float tempXSpeed = this.xSpeed;
+            float tempYSpeed = this.ySpeed;
+            this.xSpeed = other.xSpeed;
+            this.ySpeed = other.ySpeed;
+            other.xSpeed = tempXSpeed;
+            other.ySpeed = tempYSpeed;
+        }
+    }
 }
